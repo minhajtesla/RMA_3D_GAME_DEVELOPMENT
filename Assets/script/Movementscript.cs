@@ -33,6 +33,7 @@ public class Movementscript : MonoBehaviour
         crouching();
         if (Input.GetButton("Jump") && isGrounded)
         {
+            Soundmanager.instance.PlaySound(Soundtype.Jump);
             verticalVelocity = jumpForce;
         }
     }

@@ -22,10 +22,12 @@ public class DamageORHEal : MonoBehaviour
     {
         if ((isdamage))
         {
+            
             playerhealth.takedamage(ammount);
         }
         else
         {
+            //Soundmanager.instance.PlaySound(Soundtype.Heal);
             playerhealth.Heal(ammount);
         }
 
