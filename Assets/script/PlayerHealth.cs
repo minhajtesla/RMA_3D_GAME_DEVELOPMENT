@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     public Healthbar healthbar;
     public bool isdead = false;
 
-    public Rigidbody rb;
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.T))
@@ -30,17 +29,14 @@ public class PlayerHealth : MonoBehaviour
         
         if (currenthealth <=0f || isdead)
         {
-            soundmanager.instance.playsound(Sound.gameover);
+            //gameover
             Debug.Log("Player is dead");
-            isdead = true;
-             StartCoroutine(Gameover());
-
+            //sound effect can be played here
         }
         else
         {
-            soundmanager.instance.playsound(Sound.hurt);
             Debug.Log("Player took damage, current health: " + currenthealth);
-
+            //souond effect can be played here
         }
     }
 
@@ -54,14 +50,5 @@ public class PlayerHealth : MonoBehaviour
         }
         healthbar.Setvalue(currenthealth);
         Debug.Log("Player healed, current health: " + currenthealth);
-    }
-
-    private IEnumerator Gameover()
-    {
-        rb.freezeRotation = false;
-        rb.AddForce(Vector3.up * 50f, ForceMode.Impulse);
-        rb.AddTorque(new Vector3(0, 0, 10f), ForceMode.Impulse);
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("Gameover");
     }
 }
