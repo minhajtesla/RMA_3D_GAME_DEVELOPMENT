@@ -31,7 +31,7 @@ public class Movementscript : MonoBehaviour
     {
         movement();
         crouching();
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButton("Jump") && isGrounded)
         {
             verticalVelocity = jumpForce;
         }
@@ -42,7 +42,7 @@ public class Movementscript : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        Debug.Log("Horizontal: " + h + " Vertical: " + v);
+        //Debug.Log("Horizontal: " + h + " Vertical: " + v);
 
         Vector3 inputdirection = new Vector3(h, 0, v).normalized;
         Vector3 move = Vector3.zero;
